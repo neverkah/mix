@@ -191,6 +191,8 @@ public class MyFileUtil {
 
     }
 
+
+    // 删除编译产生的class文件，防止git拉取文件产生冲突
     @Test
     public void test1() throws Exception {
         traverseFolder("D:\\source\\msb\\sourceCode\\spring\\lianpengju");
