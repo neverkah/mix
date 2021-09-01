@@ -4,7 +4,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.AbstractFileFilter;
 import org.junit.Test;
 
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -190,12 +190,49 @@ public class MyFileUtil {
 
 
     }
+    // 删除编译产生的class文件，防止git拉取文件产生冲突
+    @Test
+    public void test11() throws Exception {
+        readFileByLines("E:\\迅雷云盘\\Happy.Valley.S01\\SUBDL.com__happy.valley.first.season1307831\\Happy.Valley.S01E01.1080p.BluRay.x264-GHOULS.ChsEngA.srt");
+    }
 
 
+    public static void readFileByLines(String fileName) {
+        File file = new File(fileName);
+        BufferedReader reader = null;
+        try {
+            System.out.println("以行为单位读取文件内容，一次读一整行：");
+            reader =  new BufferedReader(new InputStreamReader(new FileInputStream(file),"UTF-16"));
+
+
+                    //new BufferedReader(new FileReader(file));
+            String tempString = null;
+            int line = 1;
+            // 一次读入一行，直到读入null为文件结束
+            while ((tempString = reader.readLine()) != null) {
+                // 显示行号
+               // System.out.println("line " + line + ": " + tempString);
+                if(line % 5 == 3){
+                    System.out.println(tempString);
+                }
+                line++;
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e1) {
+                }
+            }
+        }
+    }
     // 删除编译产生的class文件，防止git拉取文件产生冲突
     @Test
     public void test1() throws Exception {
-        traverseFolder("D:\\source\\msb\\sourceCode\\spring\\lianpengju");
+        traverseFolder("D:\\source\\msb\\spring\\lianpengju");
     }
 
     @Test
