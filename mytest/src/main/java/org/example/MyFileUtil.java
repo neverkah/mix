@@ -177,20 +177,21 @@ public class MyFileUtil {
         Collection<File> c = FileUtils.listFilesAndDirs(f, new MyIOFileFilter(),new MyIOFolderFilter());
 
         final AtomicInteger javaFileCount = new AtomicInteger(0);
-        c.forEach((file) -> {
 
+        for(File file :c){
             if(file.isFile()){
                 javaFileCount.incrementAndGet();
                 System.out.println(" file  -- " + file.getPath());
             }
+        }
 
-        });
+
 
         System.out.println(" javaFileCount == " + javaFileCount);
 
 
     }
-    // 删除编译产生的class文件，防止git拉取文件产生冲突
+
     @Test
     public void test11() throws Exception {
         readFileByLines("E:\\迅雷云盘\\Happy.Valley.S01\\SUBDL.com__happy.valley.first.season1307831\\Happy.Valley.S01E01.1080p.BluRay.x264-GHOULS.ChsEngA.srt");

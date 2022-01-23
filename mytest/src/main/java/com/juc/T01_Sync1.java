@@ -20,7 +20,7 @@ public class T01_Sync1 {
     @Test
     public  void test1() throws  Exception{
         Thread.sleep(5000);
-        Person p1 = new Person("zhangsan",3);
+        final Person p1 = new Person("zhangsan",3);
 
         Person p2 = new Person("lisi",7);
 
