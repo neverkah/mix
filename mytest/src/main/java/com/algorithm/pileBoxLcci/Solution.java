@@ -47,7 +47,7 @@ class Solution {
                 maxResultIdx = i;
             }
 
-//            maxResult = Math.max(maxResult, maxHi[i]);
+
         }
         System.out.println(maxHiPath[maxResultIdx]);
         return maxResult;

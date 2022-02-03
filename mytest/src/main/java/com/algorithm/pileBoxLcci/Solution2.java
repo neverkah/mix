@@ -9,7 +9,7 @@ class Solution2 {
     }
 
     public int pileBox(int[][] box) {
-        Arrays.sort(box, (box1, box2) -> box1[0] - box2[0]);
+        Arrays.sort(box, (box1, box2) -> box1[1] - box2[1]);
         // 以 box[i] 为最下面的箱子的最大高度
         int[] maxHi = new int[box.length];
         int maxResult = Integer.MIN_VALUE;
