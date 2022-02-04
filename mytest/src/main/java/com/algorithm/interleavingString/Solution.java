@@ -1,4 +1,4 @@
-package com.algorithm.InterleavingString;
+package com.algorithm.interleavingString;
 
 import java.util.Arrays;
 
