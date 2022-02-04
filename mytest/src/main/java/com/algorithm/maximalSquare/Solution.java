@@ -4,9 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Solution {
+    public static void main(String[] args) {
+
+
+        char[][] matrix = new char[][]
+                {{'1', '0', '1', '0', '0'}, {'1', '0', '1', '1', '1'}, {'1', '1', '1', '1', '1'}, {'1', '0', '0', '1', '0'}};
+
+
+        System.out.println(new Solution().maximalSquare(matrix));
+
+
+    }
+
     public int maximalSquare(char[][] matrix) {
         int result = 0;
-        List<Region>[][] linkedLists = new ArrayList[matrix.length][matrix[0].length];
+        List<int[]>[][] regionListArr = new ArrayList[matrix.length][matrix[0].length];
         int continuousSize = 0;
         for (int i = 0; i < matrix.length; i++) {
             if (matrix[i][0] == '1') {
@@ -14,15 +26,16 @@ public class Solution {
             } else {
                 continuousSize = 0;
             }
-            List<Region> regionResult = new ArrayList<>();
+            List<int[]> regionResult = new ArrayList<>();
             if (continuousSize > 0) {
-                Region region = new Region(continuousSize, 1);
+                int[] region = new int[]{continuousSize, 1};
+
                 regionResult.add(region);
-                if (region.isSqare()) {
-                    result = Math.max(result, region.getHeight());
+                if (region[0] == region[1]) {
+                    result = Math.max(result, region[0]);
                 }
             }
-            linkedLists[i][0] = regionResult;
+            regionListArr[i][0] = regionResult;
         }
         for (int j = 1; j < matrix[0].length; j++) {
             continuousSize = 0;
@@ -32,72 +45,43 @@ public class Solution {
                 } else {
                     continuousSize = 0;
                 }
-                int index = linkedLists[i][j - 1].size() + 1;
-                List<Region> regionList = new ArrayList<>();
-                if (continuousSize > 0) {
-                    if (linkedLists[i][j - 1].size() > 0) {
-                        for (int k = linkedLists[i][j - 1].size() - 1; k >= 0; k--) {
-                            Region region = linkedLists[i][j - 1].get(k);
-                            if (continuousSize <= region.getHeight()) {
-                                index--;
-                            } else {
-                                break;
-                            }
+                List<int[]> regionList = new ArrayList<>();
+                if (continuousSize == 0) {
+                    regionListArr[i][j] = regionList;
+                    continue;
+                }
+                for (int k = 0, length = regionListArr[i][j - 1].size(); k <= length; k++) {
+                    int[] region = new int[2];
+                    boolean quit = false;
+                    if (k == length) {
+                        region[0] = continuousSize;
+                        region[1] = 1;
+                    } else {
+                        int[] prevRegion = regionListArr[i][j - 1].get(k);
+                        if (continuousSize <= prevRegion[0]) {
+                            region[0] = continuousSize;
+                            region[1] = prevRegion[1] + 1;
+
+                            quit = true;
+                        } else {
+                            region[0] = prevRegion[0];
+                            region[1] = prevRegion[1] + 1;
                         }
                     }
-                    for (int k = 0; k < index; k++) {
-                        Region region = null;
-                        if (k == linkedLists[i][j - 1].size()) {
-                            region = new Region(continuousSize, 1);
-                            regionList.add(region);
-                        } else {
-                            region = new Region(Math.min(linkedLists[i][j - 1].get(k).getHeight(), continuousSize), linkedLists[i][j - 1].get(k).getLength() + 1);
-                        }
-                        if (region.getLength() > region.getHeight()) {
-                        } else if (region.getLength() == region.getHeight()) {
-                            result = Math.max(result, region.getHeight());
-                        } else {
-                            regionList.add(region);
-                        }
+                    if (region[1] > region[0]) {
+                    } else if (region[1] == region[0]) {
+                        result = Math.max(result, region[0]);
+                    } else {
+                        regionList.add(region);
+                    }
+                    if (quit) {
+                        break;
                     }
                 }
-                linkedLists[i][j] = regionList;
+                regionListArr[i][j] = regionList;
             }
         }
         return result * result;
     }
 }
 
-class Region {
-    int height;
-    int length;
-
-    public Region(int height, int length) {
-        this.height = height;
-        this.length = length;
-    }
-
-    public int area() {
-        return height * length;
-    }
-
-    public boolean isSqare() {
-        return height == length;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-}
