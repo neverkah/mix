@@ -5,15 +5,9 @@ import java.util.List;
 
 public class Solution {
     public static void main(String[] args) {
-
-
         char[][] matrix = new char[][]
                 {{'1', '0', '1', '0', '0'}, {'1', '0', '1', '1', '1'}, {'1', '1', '1', '1', '1'}, {'1', '0', '0', '1', '0'}};
-
-
         System.out.println(new Solution().maximalSquare(matrix));
-
-
     }
 
     public int maximalSquare(char[][] matrix) {
@@ -29,7 +23,6 @@ public class Solution {
             List<int[]> regionResult = new ArrayList<>();
             if (continuousSize > 0) {
                 int[] region = new int[]{continuousSize, 1};
-
                 regionResult.add(region);
                 if (region[0] == region[1]) {
                     result = Math.max(result, region[0]);
@@ -61,18 +54,16 @@ public class Solution {
                         if (continuousSize <= prevRegion[0]) {
                             region[0] = continuousSize;
                             region[1] = prevRegion[1] + 1;
-
                             quit = true;
                         } else {
                             region[0] = prevRegion[0];
                             region[1] = prevRegion[1] + 1;
                         }
                     }
-                    if (region[1] > region[0]) {
+                    if (region[1] < region[0]) {
+                        regionList.add(region);
                     } else if (region[1] == region[0]) {
                         result = Math.max(result, region[0]);
-                    } else {
-                        regionList.add(region);
                     }
                     if (quit) {
                         break;
@@ -84,4 +75,3 @@ public class Solution {
         return result * result;
     }
 }
-
