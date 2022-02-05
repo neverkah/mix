@@ -5,7 +5,7 @@ class Solution {
     int[] digitOne = new int[]{0, 1, 20, 300, 4000, 50000, 600000, 7000000, 80000000, 900000000};
 
     public static void main(String[] args) {
-        System.out.println(new Solution().countDigitOne(23));
+        System.out.println(new Solution().countDigitOne(1000000000));
     }
 
     /**
@@ -15,38 +15,29 @@ class Solution {
      * @return
      */
     public int countDigitOne(int n) {
-        int lowNumberDigitOne = 0;  // 289 计算到第三位2的时候 lowNumberDigitOne=countDigitOne(89)
-        int lowNumber = 0;  // 计算到n位时，n-1到1位的数字   289  计算到第三位2的时候 lowNumber=89
-        boolean allNine = true; // 是否全部是9
+        int digitOneNum = 0;  // 289 计算到第三位2的时候 digitOneNum=countDigitOne(89)
+        int tail = n % 10;  // 计算到n位时，n-1到1位的数字   289  计算到第三位2的时候 tail=89
         int temp = n;  // 放除以10的结果，用来从低位到高位取数
         int digit = 0;// 从右往左数，第几位数字  289  9属于第1位 8属于第二位 2属于第三位
         int pow = 1;// 10的n次方 变量
         while (temp > 0) {
-            int number = temp % 10;
+            int head = temp % 10;
             temp = temp / 10;
-            if (number != 9) {
-                allNine = false;
-            }
             digit++;
-            pow = pow * 10;
-            if (allNine) {
-                lowNumberDigitOne = digitOne[digit];
-                lowNumber = n % pow;
-                continue;
-            }
             if (digit == 1) {
-                lowNumberDigitOne = number == 0 ? 0 : 1;
+                digitOneNum = head == 0 ? 0 : 1;
             } else {
-                if (number == 0) {
+                pow *= 10;
+                if (head == 0) {
                     continue;
-                } else if (number == 1) {
-                    lowNumberDigitOne = digitOne[digit - 1] + (lowNumber + 1) + lowNumberDigitOne;
+                } else if (head == 1) {
+                    digitOneNum = digitOne[digit - 1] + (tail + 1) + digitOneNum;
                 } else {
-                    lowNumberDigitOne = number * digitOne[digit - 1] + pow / 10 + lowNumberDigitOne;
+                    digitOneNum = head * digitOne[digit - 1] + pow + digitOneNum;
                 }
             }
-            lowNumber = n % pow;
+            tail = n % (pow * 10);
         }
-        return lowNumberDigitOne;
+        return digitOneNum;
     }
 }
