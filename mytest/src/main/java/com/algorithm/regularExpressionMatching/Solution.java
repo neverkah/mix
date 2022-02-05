@@ -1,11 +1,11 @@
 package com.algorithm.regularExpressionMatching;
 
-import java.util.Arrays;
-
 class Solution {
     String s;
     String p;
     int[][] memo;
+
+    int Y = 1, N = -1, EMPTY = 0;
 
     public static void main(String[] args) {
 //        String s = "aab", p = "c*a*b";
@@ -17,9 +17,7 @@ class Solution {
         this.s = s;
         this.p = p;
         memo = new int[s.length() + 1][p.length() + 1];
-        for (int i = 0; i < memo.length; i++) {
-            Arrays.fill(memo[i], -1);
-        }
+
         return isMatch(0, 0);
     }
 
@@ -27,15 +25,15 @@ class Solution {
         if (sIdx > s.length() || pIdx > p.length()) {
             return false;
         }
-        if (memo[sIdx][pIdx] > -1) {
-            return memo[sIdx][pIdx] == 1;
+        if (memo[sIdx][pIdx] != EMPTY) {
+            return memo[sIdx][pIdx] == Y;
         }
         if (sIdx == s.length() && pIdx == p.length()) {
-            memo[sIdx][pIdx] = 1;
+            memo[sIdx][pIdx] = Y;
             return true;
         }
         if (pIdx == p.length() && sIdx < s.length()) {
-            memo[sIdx][pIdx] = 0;
+            memo[sIdx][pIdx] = N;
             return false;
         }
 
@@ -43,14 +41,14 @@ class Solution {
             if (p.charAt(pIdx) == '.') {
                 for (int i = sIdx; i <= s.length(); i++) {
                     if (isMatch(i, pIdx + 2)) {
-                        memo[sIdx][pIdx] = 1;
+                        memo[sIdx][pIdx] = Y;
                         return true;
                     }
                 }
             } else {
                 for (int i = sIdx; i <= s.length(); i++) {
                     if (isMatch(i, pIdx + 2)) {
-                        memo[sIdx][pIdx] = 1;
+                        memo[sIdx][pIdx] = Y;
                         return true;
                     }
                     if (i < s.length() && s.charAt(i) != p.charAt(pIdx)) {
@@ -58,18 +56,18 @@ class Solution {
                     }
                 }
             }
-            memo[sIdx][pIdx] = 0;
+            memo[sIdx][pIdx] = N;
             return false;
         }
 
         if (pIdx < p.length()) {
             if ((p.charAt(pIdx) == '.') || (sIdx < s.length() && s.charAt(sIdx) == p.charAt(pIdx))) {
                 boolean matched = isMatch(sIdx + 1, pIdx + 1);
-                memo[sIdx][pIdx] = matched ? 1 : 0;
+                memo[sIdx][pIdx] = isMatch(sIdx + 1, pIdx + 1) ? Y : N;
                 return matched;
             }
         }
-        memo[sIdx][pIdx] = 0;
+        memo[sIdx][pIdx] = N;
         return false;
     }
 }

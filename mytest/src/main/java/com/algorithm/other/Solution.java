@@ -1,4 +1,4 @@
-package com.algorithm;
+package com.algorithm.other;
 
 public class Solution {
     public static void main(String[] args) {
