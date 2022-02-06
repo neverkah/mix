@@ -45,6 +45,10 @@ class Solution {
         int gap = c2 - c1;
         int c1Compare = accuSum[length - 1 - c1] - accuSum[length - 1 - c1 - gap];
         int c2Compare = accuSum[length - 1] - c1Compare;
-        return c1Compare * (length - gap) > c2Compare * gap ? c1 : c2;
+        if (length - gap == gap) {
+            return c1Compare > c2Compare ? c1 : c2;
+        } else {
+            return c1Compare * (length - gap) > c2Compare * gap ? c1 : c2;
+        }
     }
 }
