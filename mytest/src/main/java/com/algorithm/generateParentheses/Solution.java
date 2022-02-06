@@ -7,7 +7,7 @@ class Solution {
     List<String>[][] memo;
 
     public static void main(String[] args) {
-        for (String s : new Solution().generateParenthesis(8)) {
+        for (String s : new Solution().generateParenthesis(15)) {
             System.out.println(s);
         }
     }

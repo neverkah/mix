@@ -7,7 +7,7 @@ class Solution2 {
     List<String> parenthesisList = new ArrayList<>();
 
     public static void main(String[] args) {
-        for (String s : new Solution2().generateParenthesis(8)) {
+        for (String s : new Solution2().generateParenthesis(15)) {
             System.out.println(s);
         }
     }
