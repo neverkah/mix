@@ -29,6 +29,7 @@ class Solution4 {
 
     //  nums[0,endIndex] 范围内的数字，能否相加凑成sum
     private boolean dfs(int endIndex, int sum) {
+        System.out.println(endIndex + " " + sum);
         if (memoTag[endIndex][sum]) {
             return memo[endIndex][sum];
         }

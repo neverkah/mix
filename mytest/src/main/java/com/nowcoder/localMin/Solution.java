@@ -24,7 +24,7 @@ public class Solution {
                 return mid;
             }
         }
-        return 0;//随意返回，程序不会运行到这儿，不加这句，编译不过
+        return 0;
     }
 
     public int getLessIndex2(int[] arr) {
