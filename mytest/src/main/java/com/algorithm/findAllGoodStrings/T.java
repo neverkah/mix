@@ -57,7 +57,6 @@ public class T {
 
     @Test
     public void test9() {
-
         int n = 500;
         String s1 = "msefmreuttipbujumdavdehhhdxsdiedzztfsftqzvkczbzjoabijtzodujveqawdzedigtrthpunktdbjqghhlayeyczddmdovgglkxsehptaafgucwwygakkzkziyilcntljatbthrjmamxgvpnuwpurbjeujekkijspijzemopfbskqjndukahlnhckuazivgnubprvmnhnstsvkuuyqcuvgyjictywjjbfrevrsjxkitgfwsmsamaantybyughtrkvgtmvtwwisiuyragfkfutmiumyepjmlgiitzlmccpobkwtznytpgnjcfkswdbtdwmvhdlqzfusbgheialgjvewsizcytgmptzhcegteiyscqfsnrwhrdnnhvmvfylovolegpjgtjvungjwmubxtnykhdqxfqpratnhauuubofeimcdwpgqhghqkwpysqyjyabkzuocxrzevlxmzmagludzmwjuxkbafowisiwhenipmjnhq";
         String s2 = "vnkosvqcsmmxzxfiiidzoozbcdbvbnlbmthrplmzsfquyasdcvxrsyimzhuyqxlonvilykehawlevnoiqwkgxmipqnpqihnevqzfiwliyaiyrkzwihnllydmsvnswmtytzhpywdqfyyontcespmdzfvgjyjziqpnqgbqjjfikivvxmcgbxbztweltqwqbaofxztzjfbmvdjbkspgqczmfhpznmiabyfiondzpigbmaqamdfwcyvuqxhvvqyzfxmnfcorviqihjieulxqhgvdixhubhigibbxnlytjzpesebiygjiavpnnlxyxmdxwlnmmnghpfetwkoympfqvydrajbvecfnyegfnzrfcpgvhtwrcyllivpzsreszxlorksbbtfxslorrtehdchqvpbgwjjgaonufbmaplnuvmqrbgkewoeqwqcmlbnpfgvujztzhgdsytcqfrnebwkxogocljslaoyjfxhkgbwtkbzqcuaylzbdwyhs";
@@ -78,8 +77,6 @@ public class T {
 
     @Test
     public void test4() {
-
-
         int n = 411;
         String s1 = "iahmnredehjtqrgspfhufwslpihpygazallpoanlrivcijbehekyfvvyinlsfqcmuhfnxubpksaknlhmciqdsuojbrcpanefsefwkvmafzdgaewoorjxmyxbaezmcdguyhzsiwgzjsgutcnwvqxakfebkbqzxwjjraglhaxhlzwzujscatqfgjjyfoxquongytgjbutelctdympdxszhodqkbvehfxeoxctlsczpjlizvpubotdutdiqfyltjwajetzpsgbcaifcbmzcpkziqxlevfvrxxmznosjvapvuwsjghvweexlltlzfpywubadtcacscvfdbvuieivylcefjtlsmluucqldrwccdnyydcxskeajnoaluhkrqmybpwrltdfyfkifjckcnsxhnbrjkloiqz",
                 s2 = "yveimokyspovttaqsuxvesucdpgwdpdbxcipftkhmgbrscfmzigcwzqjvldhdturdzirprfyzgthfpewltigeekwmoulbuunnubvbjilksebmpwinruotdpuurgfppcmkuxfltrrywlvqjpjqgnraduqehrijyadnmtmssifwfzsxxpkquzopgysdbipbnzkppwbxrhgsrucrmfgnwxgihrjueszkjuswqflbptyzqhvrvoacyknpezevghpruomrxbrolcqqarpevhwlerzibhnbrutcehlbzuxnnrnbaziplfhxrvadcljhlpagfuwwppevcpxvtuctdsugzoxxmjnpjqjshmhxgfxdzuslqeaipnkcgnyicokxrdmnnretegoacbqmikvtkppgsdswtjdlsc",
@@ -107,7 +104,6 @@ public class T {
 
     @Test
     public void test2() {
-//        Solution.sm();
         while (true) {
             Random r = new Random();
             int n = r.nextInt(500) + 1;
@@ -115,7 +111,6 @@ public class T {
             StringBuilder s1 = new StringBuilder();
             StringBuilder s2 = new StringBuilder();
             StringBuilder evil = new StringBuilder();
-
             try {
                 for (int i = 1; i <= n; i++) {
                     s1.append((char) (r.nextInt(26) + 97));
@@ -127,7 +122,6 @@ public class T {
                 if (s1.toString().compareTo(s2.toString()) <= 0) {
                     int x1 = Solution.findGoodStrings(n, s1.toString(), s2.toString(), evil.toString());
                     int x2 = new Solution2().findGoodStrings(n, s1.toString(), s2.toString(), evil.toString());
-//                    System.out.println(n + " " + s1 + " " + s2 + " " + evil);
                     if (x1 != x2) {
                         System.out.println(n + " " + s1 + " " + s2 + " " + evil);
                         System.out.println(x1 + " " + x2);
