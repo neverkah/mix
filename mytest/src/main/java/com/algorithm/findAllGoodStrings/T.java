@@ -5,6 +5,14 @@ import org.junit.Test;
 import java.util.Random;
 
 public class T {
+    public static void main(String[] args) {
+        String s = "acd";
+        int x = 1000000000 + 7;
+        System.out.println('{' + 0);
+        System.out.println('a' + 0);
+        System.out.println("qnz".compareTo("qn"));
+    }
+
     @Test
     public void test6() {
         while (true) {
@@ -26,14 +34,6 @@ public class T {
             }
         }
 //        String s1 = "abd", s2 = "efg", evil = "ac";
-    }
-
-    public static void main(String[] args) {
-        String s = "acd";
-        int x = 1000000000 + 7;
-        System.out.println('{' + 0);
-        System.out.println('a' + 0);
-        System.out.println("qnz".compareTo("qn"));
     }
 
     @Test
