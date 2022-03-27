@@ -56,7 +56,30 @@ public class T {
     }
 
     @Test
+    public void test9() {
+
+        int n = 500;
+        String s1 = "msefmreuttipbujumdavdehhhdxsdiedzztfsftqzvkczbzjoabijtzodujveqawdzedigtrthpunktdbjqghhlayeyczddmdovgglkxsehptaafgucwwygakkzkziyilcntljatbthrjmamxgvpnuwpurbjeujekkijspijzemopfbskqjndukahlnhckuazivgnubprvmnhnstsvkuuyqcuvgyjictywjjbfrevrsjxkitgfwsmsamaantybyughtrkvgtmvtwwisiuyragfkfutmiumyepjmlgiitzlmccpobkwtznytpgnjcfkswdbtdwmvhdlqzfusbgheialgjvewsizcytgmptzhcegteiyscqfsnrwhrdnnhvmvfylovolegpjgtjvungjwmubxtnykhdqxfqpratnhauuubofeimcdwpgqhghqkwpysqyjyabkzuocxrzevlxmzmagludzmwjuxkbafowisiwhenipmjnhq";
+        String s2 = "vnkosvqcsmmxzxfiiidzoozbcdbvbnlbmthrplmzsfquyasdcvxrsyimzhuyqxlonvilykehawlevnoiqwkgxmipqnpqihnevqzfiwliyaiyrkzwihnllydmsvnswmtytzhpywdqfyyontcespmdzfvgjyjziqpnqgbqjjfikivvxmcgbxbztweltqwqbaofxztzjfbmvdjbkspgqczmfhpznmiabyfiondzpigbmaqamdfwcyvuqxhvvqyzfxmnfcorviqihjieulxqhgvdixhubhigibbxnlytjzpesebiygjiavpnnlxyxmdxwlnmmnghpfetwkoympfqvydrajbvecfnyegfnzrfcpgvhtwrcyllivpzsreszxlorksbbtfxslorrtehdchqvpbgwjjgaonufbmaplnuvmqrbgkewoeqwqcmlbnpfgvujztzhgdsytcqfrnebwkxogocljslaoyjfxhkgbwtkbzqcuaylzbdwyhs";
+        String evil = "siaazeypwyelcthrureemetwxkge";
+        long start = System.currentTimeMillis();
+        System.out.println(Solution.findGoodStrings(n, s1, s2, evil));
+        long end = System.currentTimeMillis();
+        System.out.println("Solution sovled " + (end - start) + " ms");
+        start = System.currentTimeMillis();
+        System.out.println(new Solution2().findGoodStrings(n, s1, s2, evil));
+        end = System.currentTimeMillis();
+        System.out.println("Solution2 sovled " + (end - start) + " ms");
+        start = System.currentTimeMillis();
+        System.out.println(new Solution3().findGoodStrings(n, s1, s2, evil));
+        end = System.currentTimeMillis();
+        System.out.println("Solution3 sovled " + (end - start) + " ms");
+    }
+
+    @Test
     public void test4() {
+
+
         int n = 411;
         String s1 = "iahmnredehjtqrgspfhufwslpihpygazallpoanlrivcijbehekyfvvyinlsfqcmuhfnxubpksaknlhmciqdsuojbrcpanefsefwkvmafzdgaewoorjxmyxbaezmcdguyhzsiwgzjsgutcnwvqxakfebkbqzxwjjraglhaxhlzwzujscatqfgjjyfoxquongytgjbutelctdympdxszhodqkbvehfxeoxctlsczpjlizvpubotdutdiqfyltjwajetzpsgbcaifcbmzcpkziqxlevfvrxxmznosjvapvuwsjghvweexlltlzfpywubadtcacscvfdbvuieivylcefjtlsmluucqldrwccdnyydcxskeajnoaluhkrqmybpwrltdfyfkifjckcnsxhnbrjkloiqz",
                 s2 = "yveimokyspovttaqsuxvesucdpgwdpdbxcipftkhmgbrscfmzigcwzqjvldhdturdzirprfyzgthfpewltigeekwmoulbuunnubvbjilksebmpwinruotdpuurgfppcmkuxfltrrywlvqjpjqgnraduqehrijyadnmtmssifwfzsxxpkquzopgysdbipbnzkppwbxrhgsrucrmfgnwxgihrjueszkjuswqflbptyzqhvrvoacyknpezevghpruomrxbrolcqqarpevhwlerzibhnbrutcehlbzuxnnrnbaziplfhxrvadcljhlpagfuwwppevcpxvtuctdsugzoxxmjnpjqjshmhxgfxdzuslqeaipnkcgnyicokxrdmnnretegoacbqmikvtkppgsdswtjdlsc",
