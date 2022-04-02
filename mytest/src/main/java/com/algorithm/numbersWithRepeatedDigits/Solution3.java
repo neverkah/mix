@@ -1,18 +1,21 @@
 package com.algorithm.numbersWithRepeatedDigits;
 
 class Solution3 {
-    int[] pow;
+    static int[] pow;
     int n;
     int[] nums;
     boolean[][] existInHigherDigits;
 
-    public int numDupDigitsAtMostN(int n) {
-        this.n = n;
+    static {
         pow = new int[9];
         pow[0] = 10;
         for (int i = 1; i < pow.length; i++) {
             pow[i] = pow[i - 1] * 10;
         }
+    }
+
+    public int numDupDigitsAtMostN(int n) {
+        this.n = n;
         this.nums = new int[10];
         int t = n;
         int N = 0;
