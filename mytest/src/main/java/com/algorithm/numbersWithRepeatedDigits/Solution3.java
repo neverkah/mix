@@ -1,8 +1,5 @@
 package com.algorithm.numbersWithRepeatedDigits;
 
-import java.util.ArrayList;
-import java.util.List;
-
 class Solution3 {
     int[] pow;
     int n;
@@ -16,17 +13,13 @@ class Solution3 {
         for (int i = 1; i < pow.length; i++) {
             pow[i] = pow[i - 1] * 10;
         }
-        List<Integer> integerList = new ArrayList<>();
+        this.nums = new int[10];
         int t = n;
+        int N = 0;
         while (t > 0) {
-            integerList.add(t % 10);
+            nums[N++] = t % 10;
             t /= 10;
         }
-        this.nums = new int[integerList.size()];
-        for (int i = 0; i < integerList.size(); i++) {
-            this.nums[i] = integerList.get(i);
-        }
-        int N = integerList.size();
         boolean[] digit = new boolean[10];
         // existsInHigerDigits[i][j] 表示第i位取j时，是否与n的比i高的位的数字重复
         this.existInHigherDigits = new boolean[N][10];
