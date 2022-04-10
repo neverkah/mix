@@ -14,7 +14,7 @@ public class T {
     @Test
     public void test() {
 
-        int[] nums = {1, 2, 3, 4, 5, 6};
+        int[] nums = {1, 2, 3, 4, 5, 6, 7, 8};
         System.out.println(nums.length);
         int goal = -7;
         System.out.println(new Solution().minAbsDifference(nums, goal));
