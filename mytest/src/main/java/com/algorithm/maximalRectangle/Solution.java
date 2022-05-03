@@ -38,7 +38,7 @@ class Solution {
                 }
                 // 相等的、比你小的
                 if (!stack.isEmpty() && columnarHeight[stack.peek().get(0)] == columnarHeight[j]) {
-                    stack.peek().add(Integer.valueOf(j));
+                    stack.peek().add(j);
                 } else {
                     ArrayList<Integer> list = new ArrayList<>();
                     list.add(j);

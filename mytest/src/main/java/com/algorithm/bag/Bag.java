@@ -6,8 +6,8 @@ public class Bag {
     //    完全背包（unbounded knapsack problem）与01背包不同就是每种物品可以有无限多个：一共有N种物品，每种物品有无限多个，
 //    第i（i从1开始）种物品的重量为w[i]，价值为v[i]。在总重量不超过背包承载上限W的情况下，能够装入背包的最大价值是多少？
 //    给定无限个不同重量的金属球和一个总重量，求可以凑成总重量所需的最少球的个数， 如果凑不成返回-1,例如：
-//    输入：ball_weights = [1, 2 , 5],  amount=11
-//    输出：3          11=5+5+1
+//    输入：ball_weights=[1,2,5],amount=11
+//    输出：3 11=5+5+1
     public static int process(int[] bw, int amout, int i) {
         if (i == 0) {
             if (amout % bw[0] == 0) {
