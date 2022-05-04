@@ -27,4 +27,29 @@ class Solution {
             end++;
         }
     }
+
+    public static void main(String[] args) {
+        System.out.println(new Solution().lengthOfLongestSubstring2("abcd"));
+    }
+
+    public int lengthOfLongestSubstring2(String s) {
+        int length = s.length();
+        int left = 0, right = 0;
+        int[] map = new int[128];
+        Arrays.fill(map, -1);
+        char[] charArr = s.toCharArray();
+        int res = 0;
+        while (right < s.length()) {
+            map[charArr[right]] = right;
+            right++;
+            while (left < right && (right == s.length() || map[charArr[right]] >= left)) {
+                res = Math.max(res, right - left);
+                if (right == s.length()) {
+                    break;
+                }
+                left = map[charArr[right]] + 1;
+            }
+        }
+        return res;
+    }
 }

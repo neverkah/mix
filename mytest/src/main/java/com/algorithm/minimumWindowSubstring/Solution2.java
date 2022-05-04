@@ -19,7 +19,7 @@ class Solution2 {
                 matchedNums++;
             }
             hash[cr]++;
-            while (matchedNums == t.length()) {
+            while (left < right && matchedNums == t.length()) {
                 if (right - left < minLen) {
                     minLen = right - left;
                     minLeft = left;
