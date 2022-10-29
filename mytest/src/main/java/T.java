@@ -2,6 +2,10 @@ public class T {
 
     public static void main(String[] args) {
         String s1 = "eat";
+
+        System.out.println("dfgdgdfgdf");
+        System.out.println("sfdsfdsfds");
+
         System.out.println("xxxxxx111sdsdfds");
         System.out.println("dfdsfdsfds");
         String s2 = "tea";
