@@ -4,6 +4,7 @@ public class T {
         String s1 = "eat";
         String s2 = "tea2sfdsf322";
         System.out.println("dfgdgdfgdf");
+        System.out.println("aaaaaaa");
         System.out.println(s1.hashCode() == s2.hashCode());
     }
 }
