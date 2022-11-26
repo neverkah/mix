@@ -3,6 +3,9 @@ package com.algorithm.generateParentheses;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 本质都是基于回溯算法
+ */
 class Solution2 {
     List<String> parenthesisList = new ArrayList<>();
 
