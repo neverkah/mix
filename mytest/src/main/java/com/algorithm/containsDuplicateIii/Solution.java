@@ -4,23 +4,28 @@ import java.util.TreeSet;
 
 class Solution {
     public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
-        int n = nums.length;
-        TreeSet<Integer> ts = new TreeSet<>();
-        for (int i = 0; i < n; i++) {
-            Integer u = nums[i];
-            // 从 ts 中找到小于等于 u 的最大值（小于等于 u 的最接近 u 的数）
-            Integer l = ts.floor(u);
-            // 从 ts 中找到大于等于 u 的最小值（大于等于 u 的最接近 u 的数）
-            Integer r = ts.ceiling(u);
-            if (l != null && u - l <= t) return true;
-            if (r != null && r - u <= t) return true;
-            // 将当前数加到 ts 中，并移除下标范围不在 [max(0, i - k), i) 的数（维持滑动窗口大小为 k）
-            ts.add(u);
-            if (i >= k) ts.remove(nums[i - k]);
+        int right = 1;
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        for (int left = 0; left < nums.length - 1; left++) {
+            for (; right <= left + k && right < nums.length; right++) {
+                if (treeSet.contains(nums[right])) {
+                    return true;
+                }
+                treeSet.add(nums[right]);
+            }
+            int leftV = nums[left];
+            if (match(treeSet.floor(leftV), leftV, t)) {
+                return true;
+            }
+            if (match(treeSet.ceiling(leftV), leftV, t)) {
+                return true;
+            }
+            treeSet.remove(nums[left + 1]);
         }
         return false;
     }
+
+    public boolean match(Integer target, int leftV, int t) {
+        return target != null && Math.abs(target - leftV) <= t;
+    }
 }
-
-
-
